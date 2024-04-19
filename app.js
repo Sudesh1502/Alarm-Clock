@@ -18,7 +18,8 @@ function ringSound(){
 setInterval(() => {
     let currentTime = new Date();
 
-    hrs.textContent = (currentTime.getHours() < 10 ? "0" : "") + (currentTime.getHours() > 12 ? currentTime.getHours() - 12 : currentTime.getHours()) ;
+hrs.textContent = (currentTime.getHours() < 10 ? "0" : "") + ((currentTime.getHours() % 12) || 12);
+
     min.textContent = (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
     sec.textContent = (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
 
