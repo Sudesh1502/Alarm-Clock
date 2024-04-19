@@ -79,7 +79,7 @@ function close(id){
 // ===================================================================================
 // Setting up the select options for hours and minutes
 let setHrs = document.querySelector('#set-hrs');
-for (let i = 1; i <= 12; i++) {
+for (let i = 0; i <= 12; i++) {
     const opt = document.createElement('option');
     opt.textContent = (i < 10 ? "0" : "") + i;
     setHrs.appendChild(opt);
