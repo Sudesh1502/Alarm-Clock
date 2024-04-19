@@ -111,7 +111,7 @@ function addAlarm() {
     alarm.className = 'alarms';
     const time = document.createElement('span');
     time.className = 'time';
-    time.textContent = `${hr > 10 ? hr : hr + '0'} : ${min > 10 ? min : min + '0'} : 00 ${ampm}`;
+    time.textContent = `${hr > 10 ? hr : '0' + hr} : ${min > 10 ? min : '0' + min } : 00 ${ampm}`;
     const del = document.createElement('button');
     del.className = 'del';
     del.textContent = 'Delete';
