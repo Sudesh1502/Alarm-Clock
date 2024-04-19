@@ -1,0 +1,66 @@
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    clock-box{
+        width: 380px;
+        height: 130px;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .clock span{
+        font-size: 3rem;
+        width: 50px;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+    }
+    .clock span::after{
+    
+        font-size: 0.7rem;
+        position: absolute;
+        bottom: -15px;
+        left: 60%;
+        transform: translateX(-50%);
+    }
+    #am-pm{
+        margin: 0 25px;
+    }
+
+    .set-alarm{
+        position: absolute;
+        top: 46vh;
+        left: 5%;
+        width: 20rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    select, #set-btn{
+        font-size: 1.1rem;
+        padding: 2px;
+        border-radius: 7px;
+    }
+    option{
+        font-size: 0.9rem;
+        width: 25px;
+    }
+    .fixed-alarms {
+        position: absolute;
+        width: 21rem;
+        top: 56%;
+        left: 3%;
+        /* background-color: red; */
+        height: 250px;
+        overflow-y: scroll;
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        flex-direction: column;
+    }
+
+    
+.alarms {
+    width: 100%;
+}
+  }
+  
