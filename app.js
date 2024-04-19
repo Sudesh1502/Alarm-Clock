@@ -5,11 +5,7 @@ let min = document.querySelector('#min');
 let sec = document.querySelector('#sec');
 let meridiem = document.querySelector('#am-pm');
 
-let audio = new Audio('alarm-clock-short-6402.mp3');
-function ringSound(){
-    audio.play();
-    
-}
+
 
 
 
@@ -39,8 +35,7 @@ function startAlarm(hrs, mins) {
         
         if (!alarmTriggered && currentTime.getHours() === parseInt(hrs) && currentTime.getMinutes() === parseInt(mins)) {
             alarmTriggered = true; // Set the flag to true when alarm is triggered
-
-            ringSound();
+            
             alert("Alarm is ringing...");
             clearInterval(id); // Stop the interval
             deleteAlarm(hrs, mins); // Delete the specific alarm from DOM
@@ -52,25 +47,13 @@ function startAlarm(hrs, mins) {
 }
 
 
-// ===================================================================================
 
-//Automatic deletion of Alarm after completing
-function deleteAlarm(hrs, mins) {
-    const alarms = document.querySelectorAll('.alarms');
-    alarms.forEach(alarm => {
-        const time = alarm.querySelector('.time').textContent;
-        const [alarmHrs, alarmMins] = time.split(':').map(str => parseInt(str));
-        if (alarmHrs === hrs && alarmMins === mins) {
-            alarm.parentNode.removeChild(alarm);
-        }
-    });
-}
 
 // ===================================================================================
 
 // closing the alarm to stop alert
 function close(id){
-    audio.pause();
+
     clearInterval(id);
 }
 
@@ -128,7 +111,7 @@ function addAlarm() {
     alarm.className = 'alarms';
     const time = document.createElement('span');
     time.className = 'time';
-    time.textContent = `${hr} : ${min} : 00 ${ampm}`;
+    time.textContent = `${hr > 10 ? hr : hr + '0'} : ${min > 10 ? min : min + '0'} : 00 ${ampm}`;
     const del = document.createElement('button');
     del.className = 'del';
     del.textContent = 'Delete';
