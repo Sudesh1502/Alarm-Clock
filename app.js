@@ -14,7 +14,10 @@ let meridiem = document.querySelector('#am-pm');
 setInterval(() => {
     let currentTime = new Date();
 
-    hrs.textContent = (currentTime.getHours() < 10 ? "0" : "") + (currentTime.getHours() > 12 ? currentTime.getHours() - 12 : currentTime.getHours()) ;
+    hrs.textContent = (currentTime.getHours() - 12 < 10 ? "0" : "") + (currentTime.getHours() > 12 ? currentTime.getHours() - 12 : currentTime.getHours()) ;
+    if (hrs.textContent == '00'){
+        hrs.textContent = 12;
+    }
     min.textContent = (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
     sec.textContent = (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
 
@@ -62,7 +65,7 @@ function close(id){
 // ===================================================================================
 // Setting up the select options for hours and minutes
 let setHrs = document.querySelector('#set-hrs');
-for (let i = 0; i <= 12; i++) {
+for (let i = 1; i <= 12; i++) {
     const opt = document.createElement('option');
     opt.textContent = (i < 10 ? "0" : "") + i;
     setHrs.appendChild(opt);
@@ -126,7 +129,7 @@ function addAlarm() {
     alarm.appendChild(time);
     alarm.appendChild(del);
     
-    alert(`Alarm is set for ${hr} : ${min} : 00 ${ampm}`)
+    alert(`Alarm is set for ${hr < 10 ? '0'+hr : hr} : ${min < 10 ? '0'+min : min} : 00 ${ampm}`)
     return id; // Return the interval ID
 }
 // ===================================================================================
