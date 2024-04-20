@@ -47,7 +47,7 @@ function startAlarm(hrs, mins) {
             
             alert("Alarm is ringing...");
             clearInterval(id); // Stop the interval
-            deleteAlarm(hrs, mins); // Delete the specific alarm from DOM
+            alert('Please Delete Thid ALlarm...');
         }
 
     }, 1000);
