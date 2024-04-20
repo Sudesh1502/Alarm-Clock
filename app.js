@@ -14,14 +14,20 @@ let meridiem = document.querySelector('#am-pm');
 setInterval(() => {
     let currentTime = new Date();
 
-    hrs.textContent = (currentTime.getHours() - 12 < 10 ? "0" : "") + (currentTime.getHours() > 12 ? currentTime.getHours() - 12 : currentTime.getHours()) ;
-    if (hrs.textContent == '00'){
-        hrs.textContent = 12;
+    let hours = currentTime.getHours();
+    let meri = hours >= 12 ? 'PM' : 'AM';
+    
+    hours = hours % 12 || 12; // Convert hours to 12-hour format
+
+    if (hours === 0) {
+        meri = 'AM'
+        hours = 12; // Midnight is 12 AM
     }
+
+    hrs.textContent = (hours < 10 ? "0" : "") + hours;
     min.textContent = (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
     sec.textContent = (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
-
-    meridiem.textContent = (currentTime.getHours() > 12 ? 'PM': 'AM');
+    meridiem.textContent = meri;
 }, 1000);
 
 
@@ -114,7 +120,7 @@ function addAlarm() {
     alarm.className = 'alarms';
     const time = document.createElement('span');
     time.className = 'time';
-    time.textContent = `${hr > 10 ? hr : '0' + hr} : ${min > 10 ? min : '0' + min } : 00 ${ampm}`;
+    time.textContent = `${hr < 10 ? '0'+hr : hr} : ${min > 10 ? min : '0' + min } : 00 ${ampm}`;
     const del = document.createElement('button');
     del.className = 'del';
     del.textContent = 'Delete';
